@@ -1,0 +1,91 @@
+Security Groups
++++++++++++++++
+
+-> AWS providing security for our virtual machines using Security Groups
+
+-> Security Groups will decide who can access our instance/ server / VM & what our Instance can access
+
+-> In Every Security Group we will have 2 types of rules
+
+			1) Inbound Rules
+
+			2) Outbound Rules
+
+-> Inbound rules will decide who can access our instance
+
+-> Outbound rules will decide what our machine can access
+
+
+Note: To create EC2 instance Security Group is Mandatory.
+
+In General, we will add below Inbound Rules in Security Grous
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+For Windows Machines we will use ==> RDP - 3389
+
+For Linux Machines we will use  ==> SSH - 22
+
+For WebServers ==> HTTP - 80
+
+For WebServer + SSL  ==> HTTPS - 443
+
+
+Note: We can configure particular IP also in security group.
+
+-> If we want to allow all traffic then we will configure "0.0.0.0/0"
+
+Note: AWS Security Groups will help you to configure which traffic we can allow. We can't configure Traffic Deny rules in Security Groups.
+
+      ( Security Groups support for only ALLOW, it doesn't support for DENY )
+
+Note: If we want to configure DENY rules then we should go for NACL concept.
+
+		NACL -> Network Access Control List
+
+-----------------------------------------------------------------------------------------------------
+Types of IPs
+--------------------------------------------------------------------------------------------------------
+
+-> IP stands for Internet Protocol
+
+-> IP is called as Address of the computer
+
+-> For every computer IP is mandatory to connect with Internet
+
+-> In AWS, we can see 3 types of IPS
+
+		1) Private IP
+
+		2) Public IP
+
+		3) Elastic IP (Static IP)
+
+
+-> When we launch EC2 instance, AWS will assign one Private IP for our instance (For Internal Purpose)
+
+		Note: We can't connect to EC2 using private ip from outside
+
+-> To connect with EC2 instance from outside we need Public IP. 
+
+-> When we launch EC2 instance, AWS will assign one public IP i.e temporary ip. When we re-start our EC2    instance public ip getting changed.
+
+-> If you want a static ip for your instance then you should go for Elastic IPs.
+
+
+Note: When we create Elastic IP, we have to associate that Elastic IP with EC2 instance
+
+-> If you keep Elastic IP idle then bill will be generated.
+
+Note: In Free tier, 5 Elastic IPs are free.
+
+-------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+

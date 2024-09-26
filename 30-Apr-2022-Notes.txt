@@ -1,0 +1,79 @@
+--------------------------------------------------------------------------------------------------------
+Load Balancing in EC2
+--------------------------------------------------------------------------------------------------------
+
+-> Load Balancing is the process of distributing application load to multiple servers
+
+-> Instead of deploying our application in one server, we will deploy in multiple servers
+
+-> All the servers will be connected to Load Balancer
+
+-> LBR will distribute traffic to servers using Round Robin algorithm
+
+
+Process to Setup Load Balancer
++++++++++++++++++++++++++++++++++
+
+
+1) Create Security Group with below Protocols in Inbound Rules
+
+		SSH - 22
+		HTTP - 80
+
+	SGName : ashokit_Security_group
+
+
+2) Create first EC2 instance (EC2-1) and Host Web Application
+
+Note: Configure below script as 'User Data' at the time of launching the instance
+
+#! /bin/bash
+
+sudo su
+yum install httpd -y
+cd /var/www/html
+echo "<html><h1>Life Insurance Server - 1</h1></html>" > index.html
+service httpd start
+
+3) Create second EC2 instance (EC2-2) and host web application
+
+Note: Configure below script as 'User Data' at the time of launching the instance
+
+#! /bin/bash
+sudo su
+yum install httpd -y
+cd /var/www/html
+echo "<html><h1>Life Insurance Server - 2</h1></html>" > index.html
+service httpd start
+
+4) Create Load Balancer ( ALB ) and attach both EC2 instances as one target group
+
+		Scheme : Internet facing
+
+		Select : New Target Group (Add both EC2 instances)
+
+		Listner : HTTP : 80
+
+		Security Group : ashokit_Security_Group
+
+Note: Once Load Balancer created, DNS will be generated (it will take upto 3 mins)
+
+
+5) Send a request to Load Balancer DNS URL and see the response 
+
+ (it should distribute traffic to both servers)
+
+
+Note
+++++++++++
+1) DELETE Load balancer
+2) Delete EC2 instances
+
+
+
+
+
+
+
+
+

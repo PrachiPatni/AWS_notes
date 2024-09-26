@@ -1,0 +1,216 @@
+-> We launched Windows VM using EC2 in AWS
+
+-> We connected with windows vm using RDP client
+
+							RDP
+		My Laptop -----------------> Windows VM
+
+-> Windows OS is recommended only for personal use
+
+-> In Realtime Environment , we will use Linux OS to run our applications
+
+
+Linux
++++++
+-> Linux is Free and Open source OS
+-> Linux is secured OS
+-> Linux is Multi User Based OS
+-> Linux Operating System having Several Distributions (flavours)
+
+Ubuntu
+Debian
+Suse
+Fedora
+Amazon Linux
+
+----------------------------------------------------------------------------------------------------
+Requirement : Launch Linux VM using EC2 service and connect to Linux VM using Putty or Mobexterm software.
+------------------------------------------------------------------------------------------------------
+
+-> When we launch EC2 instance use Key-Pair for securing our EC2 instances
+
+-> Key-Pair is a combination of public key & private key
+
+-> AWS will store public key and it will provide private key file for us
+
+		(private key file will have .pem extension)
+
+-> For Windows VM we will open RDP port (3389)
+
+-> For Linux VM we will open SSH port (22)
+
+
+Launch Linux VM
+----------------
+Choose AMI (Amazon Linux)
+Instance Type -> t2.micro (Free Tier Eligible)
+Configure Instance Details (No need to change anything) 
+Storage (Default 8gb for Linux)
+Add Tag (Name -> MyFirstLinuxVM)
+Security Group (SSH with Port 22)
+Download Key Pair (.pem file)
+Launch Instance
+Go to EC2 dashboard and Check Public IP of Ec2 instance and notedown that
+
+
+Connect to EC2 using putty
+--------------------------
+1) Download and install putty software
+2) Open Putty Gen software and convert .pem to .ppk file
+3) Open Putty software and connec to EC2 using IP & PPK file
+		(SSH -> Auth -> Upload ppk file)
+		IP : <take from ec2 dashboard>
+		Username : ec2-user
+
+Connect to EC2 using MobaXterm
+-------------------------------
+1) Download and install MobaXterm software
+2) Open Session and choose SSH
+3) Enter HOST name as public ip of Ec2 instance
+4) Go to Advanced SSH setting and upload .pem file directley
+5) Connect to EC2 and enter username
+
+
+
+
+Deploying web application using EC2 VM
+---------------------------------------
+
+-> The applications which we are accessing through internet are called as web applications
+
+-> Web applications are used for Customer 2 Business Communications
+
+		Ex: Google, Gmail, Facebook, Linkedin, Naukri, IRCTC etc.....
+
+-> Web application nothing but collection of web pages
+
+-> Web application will be deployed in webserver
+
+-> Users will send request to webserver to access web application
+
+
+Steps to host a website in EC2 instance
+++++++++++++++++++++++++++++++++++++++
+1) Login into AWS Cloud Account
+
+2) Launch EC2 Instance ( AMI : Amazon Linux )
+
+3) Connect to EC2 instance using Putty / MobaXterm
+
+4) Install HTTPD Webserver in EC2 instance
+
+5) Setup Website in EC2 instance
+
+6) Configure Security Groups
+	(SSH - 22 for admin access & HTTP - 80 for users to access our website)
+
+7) Access Website from Browser using EC2 Instance Public IP
+
+
+Commands To Execute
+-------------------------
+$ sudo su
+$ yum update -y
+$ yum install httpd -y
+$ cd /var/www/html
+$ echo "Welcome to Ashok IT Website..!!" > index.html
+$ service httpd start
+
+
+Note: After this excersise completed then STOP your EC2 instance.
+
+--------------------------------------------------------------------------------------------------
+
+-> EC2 => Elastic Compute Cloud
+
+-> Using Ec2 we can create virtual machines in AWS Cloud
+
+	EC2 instance = Virtual Machine / Instance / Server
+
+-> EC2 having Several AMIs (Amazon Machine Image)
+
+-> AMI means pre-configured machine. EC2 is giving several AMIs to launch Virtual Machines quickly
+
+	Linux AMI
+	Windows AMI
+	Mac OS AMI
+
+=> Using EC2 AMIs we can launch Virutual Machines Easily
+
+=> In AWs, we can create our own Images also
+
+
+1) Go to EC2 dashboard
+
+2) Select EC2 instance 
+
+3) Click on Action -> Select Image -> Create Image -> Give Unique Name for Image
+
+Note: This will create our Image in AWS
+
+Note: Images are Regional Specific. 
+
+Note: When we are working on multiple projects then we can use Images to setup Virtual Machines easily
+
+
+Note: After practise, delete your Images
+-------------------------------------------------------------------------------------------------
+
+-> In Ec2 we have several Instance types
+
+
+1) On-Demand Instance
+		- Fixed Price (Hourly)
+		- Pay for what you use
+		- No Commitment
+		- No upfront Payments
+
+2) Reserved Instances
+		- Long Term Committement
+		- Upfront Payment
+		- 1 year or 3 years
+		- 75% discount 
+
+3) Spot Instances
+		- Auction Instances
+		- Bidding
+		- Huge Capacity for Cheap Price
+
+4) Dedicated Host Instances
+		- Dedicated Physicals
+		- Licensed Softwares
+		- Dedicated Host is much costlier than others
+
+
+------------------------------------------------------------------------------------------------------------------
+
+-> EC2 having Instances as Families
+
+		t1, t2, t3, c1, a1 etc...
+
+
+Note: In t2 family t2.micro instace is Free Tier Eligible (For 1 year, monthly 750 hours)
+
+Note: EC2 instance minimum billing period is hour. If you use it for 5 mins also they will consider as 1 hour.
+
+-> If EC2 instance is in "Running" state then it will consider for billing.
+
+		Stop / Terminate State : No Bill
+
+------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

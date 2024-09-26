@@ -1,0 +1,9 @@
+Snapshots Lab Task
++++++++++++++++++++
+1) Create EC2 instance in 1a zone
+2) Create EBS Additional Volume(v1) in 1a zone
+3) Creat Snapshot(s1) from 1a zone volume (v1)
+4) Create Volume(v2) in 1b zone from Snapshot(s1)
+5) Create EC2 instance in 1b zone
+6) Attach 1b zone volume(v2) to 1b zone EC2 instance
+7) Delete snapshot, volume and instances
