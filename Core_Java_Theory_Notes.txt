@@ -1,0 +1,1290 @@
+Abstraction
+===========
+Abstraction	
+
+Definitions :
+	Abstraction is the process of extracting the relevant properties of an object that are relative to the perspective of the viewer,  while ignoring nonessential details. 
+Examples:
+		a)  Car :- A car dealer might view a car from the standpoint of its selling features. Relevant properties include price, color, optional equipment, and length of warranty. On the other hand , mechanic views the car from the standpoint of systems that require maintenance. Here relevant properties include the type of oil, the size of oil filter, and the number and type of spark plug. The relevant properties are defined by how we use or manipulate the object. Clearly, the properties of a car relevant to a car dealer are different from the properties relevant to a mechanic. By focusing on the relevant properties and ignoring irrelevant details, the complexity of dealing with an object is reduced.
+		b) Person:-  Lets take a person as example and see how that person is abstracted in various situations
+•	A doctor sees (abstracts) the person as patient.  The doctor is interested in name, height, weight, age, blood group,  previous or existing diseases etc of a person 
+•	An employer sees (abstracts) a person as Employee. The employer is interested in name, age,  health, degree of study, work experience  etc of a person.  
+•	For a sales tracking system relevant attributes of a salesperson might be: name, number of vehicles sold, value of vehicles sold, list of customers, commission rate, total commissions. Actions for a "salesperson" might include "sellCar", "reportIncome" and "increaseCommisionRate".
+c) For Eg.  Yahoo Mail...
+
+Layman’s perspective:
+provide the user name and password 
+click on submit button..
+select Compose,Inbox,Outbox,Sentmails...so on..
+developer’s perspective:
+look and feel of web pages……
+how to validate user name and password…
+which server it should connect to …..
+ensuring successful mail sent as well as receipt.
+
+d) 	ATM
+
+	User Perspective:
+	swipe your card to withdraw money,
+	some instructions to be followed displayed on the screen,
+	provide some info like pin code of your account,
+	withdraw amount
+	get the balance
+	change the pin
+	get the statement
+
+	Application Developer perspective:
+	how queries are being generated based on user’s info in atm machine,
+	which database these queries are going to, Oracle or Mysql etc.
+	where that database is located
+which language has been used for these implementation i.e. java or c# or c++,
+
+===============
+Encapsulation
+===============
+Definitions:
+	Encapsulation is the process of separating the aspects of an object into external and internal aspects. The external aspects of an object need to be visible or known , to other objects in the system.  The internal aspects are details that should not affect other parts of the system. Hiding the internal aspects of an object means that they can be changed without affecting external aspects of the system.
+
+A common example is a car. When you drive a car, you interact with a set of controls like the steering wheel, pedals, and gear shift. You don’t need to understand the complex mechanics of the engine, transmission, or other internal systems to drive the car. All those internal components are encapsulated within the car’s design. The car’s internal workings are hidden from you, but you can still operate it efficiently through a simple and user-friendly interface.
+
+In this way, encapsulation simplifies user interaction by providing a clear and manageable interface while keeping the complexities out of sight.
+
+
+What is the relationship between abstraction and encapsulation?
+==================================================================
+Ans:- abstraction focuses upon the  observable behavior of an object, whereas encapsulation focuses upon the implementation that gives rise to this behavior. abstraction is a perspective and encapsulation is implementation to achieve that perspective.
+
+
+=========
+package
+=========
+
+package is a collection of related classes and interfaces.
+
+package is mainly used to avoid name conflicts.
+package concept is similar to "namespace" concept of C++.
+
+java has so many in-built packages . e.g.
+
+java.awt
+java.io
+java.util
+java.lang
+and so on
+
+by def. java.lang is available to all the java applications.
+
+in order to use package u need to use the keyword "import".
+
+when u say "import", nothing is physically included ( unlike #include of c and c++ ). It is only for compiler. Runtime performance is not at all affected with "import" statements.
+
+
+
+
+
+
+
+Lazy_Eager_Resolution
+=====================
+
+class Sample
+{
+	int num1=100; // num1 will be allocated memory only after we create object/s
+
+	static int num2=200; // num2 will be allocated memory as soon as Sample class gets loaded.
+
+}
+
+class A {           }
+class B {           }
+
+class Sample
+{
+	A ob1=new A();  // class A will be loaded only after first object of Sample gets created.  - lazy resolution
+
+	static B ob2=new B();  // class B will be loaded immediately after class Sample gets loaded  -  eager resolution
+}
+
+
+
+
+
+Reusability
+===========
+means using existing type while defining a new type. It can be achieved in two ways:
+a) composition/aggregation [has-a relationship]
+b) inheritance [is-a relationship]
+
+you go for composition/aggregation when you want to use some of the functionalities of existing type inside new type.
+	e.g.
+	while designing "Car" you would reuse "Engine" by composition/aggregation, because "Car" is not an "Engine" it just needs some functionalities of Engine.
+
+you go for inheritance when you realize that new type is "same as" existing type.
+	e.g.
+	while designing "Car" you would reuse "FourWheeler" because Car is same as FourWheeler.
+===========
+Inherience
+===========
+
+The ability for a new class to be created from an existing class by extending it is known as inheritance. It provides reusability. Basically you go for inheritance when u realize that "new type is same as existing type". 
+
+e.g.
+
+class Person
+{
+	private String name,address;
+	private int age;
+
+	// setters and getters
+}
+
+now we can derive "Student" class from Person.
+
+class Student extends Person
+{
+	private String qualification;
+	private int rollno,ccppid;
+
+	//setters and getters
+}
+
+	Here Student can inherit "name","address" and "age" from "Person" class.
+
+
+Java allows only 3 types of inheritance
+a) single level  b) multi-level  c) Hierarchical
+
+Inheritance is inbuilt in java i.e. if your class is not derived from any base class, "java.lang.Object" is the base class of it.
+
+
+Inheritence Programs:-E:\CORE JAVA VITA\Day_3\Day_3\Inheritance Programs
+
+
+when we create object of child class 
+	control goes to child class constructor
+
+	from there it will invoke parent class default/no-arg constructor by default.
+	and then it comes back inside child class constructor.
+
+================================================================
+what if parent class does not have "default/no-arg" constructor?
+=================================================================
+	By default we get an error.
+
+How do we solve this problem?
+
+	a) we can provide "default/no-arg" constructor inside parent class
+		or
+	b) invoke parameterized constructor of parent class from child class ( using "super")
+
+
+// when base class does not have "no-arg constructor", all the constructors of sub class must explicitly invoke "parameterized constructor" of base class.
+============
+Overriding
+============
+Overriding is a feature that allows a subclass or child class to provide a specific implementation of a method that is already provided by one of its super-classes or parent classes
+
+Overriding Rules
+================
+1) arguments must be same otherwise it becomes "overloading".
+2) returntype of overriding can be co-variant.
+3) overriding method must be having same or more accessibility as compare to overridden method.
+4) overriding and checked-exception rule :
+
+a) overriding  method may not declare any checked exception.
+b) overriding method can declare same checked exception or its sub-type declared by overriden method.
+c) overriding method can not declare checked exception not declared by overriden method.
+
+Example
+class FourWheeler
+{
+	// members
+	void start()  // overridden
+	{
+		basic logic to start any Fourwheeler
+	}
+}
+
+class Car extends FourWheeler
+{
+	// own members
+	// member functions
+
+// overriding "start" method
+	void start()    // overriding
+	{
+		super.start();
+		specific details in order to start the car
+
+	}
+}
+
+public class CarDemo
+{
+	public static void main(String args[])
+	{
+		Car c=new Car("Honda Car");
+		c.start();
+	}
+}
+===================================================================================================================================================================
+Access Specifiers
+=================
+Accessibility modifiers	  Same class 	Sub class in same package   Different class in same package	Sub class in different package	Different class in different                                                                                                                                                         package
+Private	                    Yes	                  No	                          No	                             No	                              no
+<default>	            Yes	                  Yes	                          Yes	                             No	                              no
+Protected	            Yes	                  Yes	                          Yes	                             Yes	                      no
+Public	                    Yes	                  Yes	                          Yes	                             Yes	                      yes
+
+========
+Binding
+========
+what is Binding?
+
+resolving function call with function body is called as Binding.
+
+how many types of Binding are there?
+
+2 types: early binding and late binding
+
+	early binding means resolving function call with function body at the compilation time.
+        e.g=> e.g. normal function calls, overloading of functions and operator.The main advantage to early binding is efficiency. Because all information necessary to call a function is determined at compile time, these types of function calls are very fast.
+
+
+	late binding means resolving function call with function body at the runtime.
+        Virtual functions are used to achieve late binding. The object and the function are not linked until runtime. The main advantage of late binding is flexibility.
+============================================================
+What is the role played by Compiler in case of late binding?
+=============================================================
+
+Suppose we have,
+
+		base ref=new sub1();  // upcasting
+		ref.disp();  // late binding
+
+when compiler encounters "ref.disp()" ,
+	for the compiler "ref" is of type "base". So compiler searches "disp()" inside "base".
+if it's there,accessible and non-final, compiler writes an instruction for runtime to follow. That instruction is 
+" during runtime check the content of "ref" and invoke "disp()" accordingly.during runtime content of "ref" will be "sub1"  so "disp()" of sub1 will be invoked
+
+What is Loose Coupling and tight Coupling?
+===========================================
+Coupling is the degree to which one object knows about another object. If the only knowledge that object A has about object B, is what B has exposed through its interface (Program to interface), then object A and object B are said to be loosely coupled... on the other hand, object A relies on object B’s implementation (Program to implementation), then A and B are said to be tightly coupled.
+
+class Car extends FourWheeler
+{
+	private MarutiEngine engine=new MarutiEngine; // tight coupling , program to implementation
+}
+
+class Car extends FourWheeler
+{
+	private Engine engine; // loose coupling , program to interface
+public Car(Engine engine) // can be provided with any implementation during runtime.
+{
+		This.engine=engine;
+}
+}
+
+
+What is Cohesion?
+===================
+Ans:- cohesion is all about how a single class is designed. The term "cohesion" is used to indicate the degree to which a class has a single, well-focused purpose. Cohesion is a subjective concept. The more focused a class is, the higher its cohesiveness - a good thing. The key benefit of high cohesion is that such classes are typically much easier to maintain (and less frequently changed) than classes with low cohesion. Another benefit of high cohesion is that classes with a well-focused purpose tend to be more reusable than other classes. 
+
+4) How composition is better than inheritance?
+=======================================================
+Ans:- Favour composition over inheritance is a one of the popular object oriented design principle, which helps to create flexible and maintainable code in object oriented languages. 
+
+
+
+1) In case of extending a class, you only get facilities which are available at compile time.
+
+e.g:
+Class FileReader
+{
+Read()
+{
+// code to read from file
+}
+}
+Class FileWriter
+{
+Write()
+{
+// code to write to file
+}
+}
+
+Class MyApplication:FileWriter, FileReader
+{
+
+	Perform()
+	{
+		Read() // of FileReader   // tight coupling
+		Write() // of FileWriter  // tight coupling
+	}
+}
+
+drawbacks:
+
+•	Tight coupling- if base class ( FileReader or FileWriter) is changed, sub class (MyApplication) will break.
+•	inheritance breaks encapsulation. white-box reuse. That is ,with inheritance, the parent class implementation is often visible to the subclasses.
+
+2) Composition offers better test-ability of a class than Inheritance. If one class is composed of another class, you can easily create Mock Object representing composed class for the sake of testing. Inheritance doesn't provide this luxury. In order to test derived class, you must need its super class. Since unit testing is one of the most important thing to consider during software development, especially in test driven development, composition wins over inheritance.
+
+e.g.
+
+interface Reader
+{
+		Void read();
+}
+Interface Writer
+{
+		Void write();
+}
+Class FileReader implements Reader
+{
+		Void read()
+		{
+			Code to read from file
+		}
+}
+Class FileWriter implements Writer
+{
+		Void write()
+		{
+			Code to write to file
+		}
+}
+
+Class MyApplication
+{
+		// program to interface, enables loose coupling
+		Reader ref1; 
+		Writer ref2;
+
+Public MyApplication(Reader ref1,Writer ref2)
+{
+This.ref1=ref1;
+This.ref2=ref2;
+}
+
+Void perform()
+{
+Ref1.read(); // late binding
+Ref2.write(); // late binding
+}
+}
+
+In the above example “MyApplication” is composed of “Reader” and “Writer”.
+
+Advantages:
+•	 black-box reuse as it does not break encapsulation. MyApplication knows only selected functionalities from “Reader” and “Writer”.
+•	Loose coupling, program to interface. During runtime any implementations (such as “FileReader” or “SocketReader”  and “FileWriter” or “SocketWriter”) can be passed to “Reader” or “Writer” respectively and “read()” method can be invoked on it polymorphically.
+
+Most of the  object oriented design patterns mentioned by Gang of Four favour Composition over Inheritance. 
+
+In short, don't use Inheritance just for the sake of code reuse, Composition allows more flexible and extensible mechanism to reuse the code.
+Though there are certainly some cases where using Inheritance makes much sense like when a genuine parent child relation exists, but most of time it makes sense to favour composition over inheritance for code reuse. 
+
+what is “black-box-reuse” and “white-box-reuse”?
+=================================================
+Ans: Class inheritance, or sub classing, allows a subclass' implementation to be defined in terms of the parent class' implementation. This type of reuse is often called white-box reuse. This term refers to the fact that with inheritance, the parent class implementation is often visible to the subclasses. 
+
+Object composition is a different method of reusing functionality. Objects are composed to achieve more complex functionality. This approach requires that the objects have well-defined interfaces since the internals of the objects are unknown. Because objects are treated only as "black boxes," this type of reuse is often called black-box reuse.
+
+
+Give an example between tight coupling and loose coupling.
+===============================================================
+Ans:-  Program wise Difference between Tight Coupling and Loose Coupling?
+
+Tight Coupling Between two Objects
+
+class Traveler
+{
+    Car c=new Car();
+    void startJourney()
+    {
+       c.move();
+    }
+}
+
+class Car
+{
+  void move()
+  {
+     // logic...
+  }
+}
+
+Loose Coupling Between two Objects
+
+class Traveler
+{
+    Vehicle v;
+    public void setV(Vehicle v)
+    {
+      this.v = v;
+    }      
+
+    void startJourney()
+    {
+       v.move();
+    }
+}
+//=========================Interface====================================
+ Interface Vehicle
+    {
+       void move();
+    }
+//====================Multiple class implement vehicle interface. 
+First class====
+class Car implements Vehicle
+{
+    public void move()
+    {
+         // logic
+    }
+}
+//===================
+Second class================
+class Bike implements Vehicle
+{
+    public void move()
+    {
+         // logic
+    }
+}
+
+
+
+
+Demo 25 to 27 E:\CORE JAVA VITA\Day_3\Day_3\Inheritance Programs
+========================
+Discussion of Upcasting
+========================
+E:\CORE JAVA VITA\Day_4\Day_4\Today's Discussion
+
+CourseDemo to CourseDemo4  :- E:\CORE JAVA VITA\Day_4\Day_4\Today's Discussion
+
+
+================================
+what is "instanceof" operator?
+=================================
+instanceof operator checks is-a relationship. It returns true or false.
+e.g.
+if "ref" refers to "Dac_Dbda" and u check
+	if(ref instanceof Dac_Dbda)  it returns "true"
+
+if "ref" refers to "Mscit" and u check
+	if(ref instanceof Dac_Dbda)  it returns "false"
+==================================================
+What is upcasting and downcasting with example?
+==================================================
+UpCast -> making base class reference referring to sub class object or assigning sub class object to base class reference.
+         It is required to make polymorphic calls with an enormous flexibility.
+e.g
+					Weapon
+						attack
+Gun			Sword			Riffle
+All these child classes have overridden “attack()” method.
+We can make Weapon class reference and make it refer to any child class (existing or may be introduced later ) and invoke “attack()” method polymorphically. Here code which invokes “attack()” with the help of “Weapon” class remains unchanged irrespective of changes happen inside inheritance hierarchy [ i.e. any child class gets removed or added ].
+
+
+====================
+what is downcasting?
+======================
+conversion from base type to derived type is called as "downcasting".
+converting base class reference to sub class reference.
+
+It is used to invoke that method of sub class which is not a part of base class.
+
+e.g. in case of above hierarchy suppose we have an additional method “fillBullets()” inside Gun. Now when Weapon reference refers to Gun, we would like to invoke “fillBullets()” along with “attack()”. For this reason we need to downcast from Weapon to Gun.
+
+=========================
+When to use downcasting?
+=========================
+when base reference referring to child object (upcasting) and u want to invoke a method of child class (on the same object) which is not there in the base class, you need to use downcasting.
+
+What is method overloading?
+=============================
+Ans:- defining more than one functions with the same name but with different arguments is known as “Method Overloading”
+e.g.
+Account  class
+
+openAccount(int accno)  //  to allow zero balance account.
+
+openAccount(int accno,double balance)   // open account with some balance.
+
+==========
+Abstract
+==========
+Abstract class is used when you know something and rely on others for what you don't know.(here it is partial abstraction as some of the things you know and some you don't know.)
+
+===================================
+When to use abstract class in java?
+====================================
+while designing Parent class, if u realize that there is some functionality compulsorily required in child classes but Parent class is not able to define it. This functionality is a contract or abstract function. Since abstract function can not be declared inside non-abstract class, u have to make class as abstract.
+
+abstract class cannot be instantiated.
+	because abstract class is incomplete i.e. it has at least one contract [abstract method]
+
+can abstract class have a constructor?
+
+	yes, it will be invoked from sub class constructor when sub class gets instantiated.
+
+
+abstract class Person
+{
+	walk(),talk(),sleep(),eat()
+
+	abstract performDuties();
+}
+
+class HouseWife extends Person
+{
+
+}
+class Teacher extends Person
+{
+
+}
+class Soldier extends Person
+{
+}
+
+public PersonDemo
+{
+	static void perform(Persorn ref)
+	{
+		ref.walk(); ref.talk(); ref.sleep(); ref.eat(); ref.performDuties();
+	}
+
+	main()
+	{
+		invoke perform by passing HouseWife, Teacher and Soldier
+	}
+}
+
+
+===============
+Why Interfaces
+===============
+public abstract class MouseEventHandler
+{
+	public abstract void mouseClicked();
+	public abstract void mouseReleased();
+}
+
+public abstract class WindowEvenHandler
+{
+	public abstract void windowOpened();
+	public abstract void windowClosed();
+}
+
+what if our GUIApp class would like to extend both the classes?
+	it's not possible:
+	what's a solution?
+
+
+above should be interfaces as they contain only contracts
+	advantages
+		our GUIApp class can implement both of them.
+
+
+public interface Electronic_Appliance
+{
+	void switch_on();
+	void switch_off();
+}
+class TV implements Electronic_Appliance
+{
+
+}
+class Washing_Machine implements Electronic_Appliance
+{
+
+}
+class Refrigerator implements Electronic_Appliance
+{
+
+}
+
+compare above example with socket where u can plug-in tv or wm or refri.
+
+
+
+
+public interface Electronic_Appliance
+{
+	// only contract
+
+	 void on();
+	 void off();
+}
+class TV implements Electronic_Appliance
+{
+
+}
+class Washing_Machine implements Electronic_Appliance
+{
+
+}
+class Refrigerator implements Electronic_Appliance
+{
+
+}
+
+
+
+one more example
+
+
+public interface Room
+{
+  public void calcArea();
+  public void applyColors(Color c);
+   public void applyCurtains(Color c);
+}
+
+==========
+Interface
+==========
+Interface is used when you want to define a contract and you don't know anything about implementation. (here it is total abstraction as you don't know anything.)
+
+========================
+Interface Prior to JDK8 
+========================
+	interface in java
+
+interfaces are abstract in nature. i.e. they can not be instantiated.
+
+interface can contain methods declaration. Method which is declared inside interface is by default "public" and "abstract".
+
+variable which is declared in interface is by default "public","static" and "final".
+
+a class can be derived from one or more interfaces. ("implements" keyword)
+
+child class has to define all the methods of parent interface/s otherwise u need to make child class as "abstract".
+
+one interface can be derived from one or more other interfaces. ("extends" keyword)
+
+if a class is derived from some other class and some interfaces, "extends" keyword should precede "implements".
+
+==========
+Session-7
+==========
+==========================
+Polymorphism & Overriding
+==========================
+Polymorphism is the ability of an object to take on many forms. 
+e.g.
+
+person behaves like student at college, son at home, customer in the mall.
+	how can we implement this program design?
+
+class Person
+{
+	void behave()
+	{
+	}
+}
+class Student extends Person
+{
+	void behave()
+	{
+		behaves like a student
+	}
+}
+class Son extends Person
+{
+	void behave()
+	{
+		behaves like a son
+	}
+}
+class Customer extends Person
+{
+	void behave()
+	{
+		behaves like a customer
+	}
+}
+
+
+void perform(Person p)
+{
+	p.behave();  // late binding or polymorphism
+}
+main()
+{
+	perform(new Student());
+	perform(new Son());
+	perform(new Customer());
+}
+
+
+
+different animals make different sound
+
+class Animal
+{
+	void makeSound()
+	{
+	}
+}
+class Dog extends Animal
+{
+	void makeSound()
+	{
+		bark
+	}
+}
+class Cat extends Animal
+{
+	void makeSound()
+	{
+		meow
+	}
+}
+class Tiger extends Animal
+{
+	void makeSound()
+	{
+		roar
+	}
+}
+
+void perform(Animal a)
+{
+	a.makeSound();  // late binding or polymorphism
+}
+main()
+{
+	perform(new Dog());
+	perform(new Cat());
+	perform(new Tiger());
+}
+
+we can attack using any weapon
+
+class Weapon
+{
+	void attack()
+	{
+	}
+}
+class Gun extends Weapon
+{
+	void attack()
+	{
+		Gun attack
+	}
+}
+class Sword extends Weapon
+{
+	void attack()
+	{
+		Sword attack
+	}
+}
+class Bomb extends Weapon
+{
+	void attack()
+	{
+		Bomb attack
+	}
+}
+
+
+void perform(Weapon w)
+{
+	w.attack();  // late binding or polymorphism
+}
+
+main()
+{
+	perform(new Gun());
+	perform(new Sword());
+	perform(new Bomb());
+}
+
+Association 
+============
+Association is a relationship where all object have their own lifecycle and there is no owner. Let’s take an example of Teacher and Student. Multiple students can associate with single teacher and single student can associate with multiple teachers but there is no ownership between the objects and both have their own lifecycle. Both can create and delete independently.
+===========================
+Aggregation & Composition
+===========================
+
+Aggregation is a specialize form of Association where all objects have their own lifecycle but there is ownership and child object cannot belong to another parent object. Let’s take an example of Department and teacher. A single teacher cannot belong to multiple departments, but if we delete the department teacher object will not destroy. 
+
+==================
+Aggregation Demo 
+==================
+package aggregation;
+
+class Teacher
+{
+	private String name;
+	private	int age;
+	public Teacher(String name,int age)
+	{
+		this.name=name;
+		this.age=age;
+	}
+	public String getName()
+	{
+		return name;
+	}
+	public void setName(String name)
+	{
+		this.name = name;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public void work()
+	{
+		System.out.println("Teacher is working");
+	}
+};
+
+class Department
+{
+	private Teacher teacher;
+	private String dname;
+	public	Department(String dname)
+	{
+		teacher=null;
+		this.dname=dname;
+	}
+	public String getDname()
+	{
+		return dname;
+	}
+	public void addTeacher(Teacher teacher)
+	{
+		this.teacher=teacher;
+	}
+	public void perform()
+	{
+		System.out.println(dname+"\t");
+		teacher.work();
+	}
+}
+
+public class AggregationDemo
+{
+	public static void main(String[] args)
+	{
+		Department sd=new Department("Science Department");
+		Department md=new Department("Maths Department");
+		System.out.println(sd.getDname());
+		System.out.println(md.getDname());
+		Teacher t1=new Teacher("Abc",35);
+		System.out.println(t1.getName()+"\t"+t1.getAge());
+		md.addTeacher(t1);
+		md.perform();
+		System.out.println("Lets close the maths department");
+		md=null;  // delete maths department
+		System.out.println(t1.getName()+" still exists and can join some other department");
+		sd.addTeacher(t1);
+		sd.perform();
+		// ..... after some time ......
+		sd=null;  //delete science department
+		System.out.println(t1.getName()+" still exists and can join some other department");
+
+	}
+
+}
+ 
+
+
+Composition is again specialize form of Aggregation and we can call this as a “death” relationship. It is a strong type of Aggregation. Child object does not have its lifecycle and if parent object dies all child object will also be deleted. Let’s take again an example of relationship between House and rooms. House can contain multiple rooms there is no independent life of room and any room cannot belongs to two different house if we delete the house room will automatically delete. Let’s take another example relationship between Questions and options. Single questions can have multiple options and option can not belong to multiple questions. If we delete questions options will automatically delete.
+
+===================
+Composition Demo
+===================
+package aggregation;
+
+import java.util.Scanner;
+
+class Room
+{
+	private String name;
+	public Room(String name)
+	{
+		this.name=name;
+	}
+	public Room()
+	{
+		name=null;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+};
+
+class House
+{
+	private Room rooms[];
+	private String name;
+	private String address;
+	private int no_rooms;
+	public	House(String name,String address,int no_rooms)
+	{
+		this.name=name;
+		this.address=address;
+		this.no_rooms=no_rooms;
+		this.rooms=new Room[no_rooms];
+		String rname;
+		Scanner sc=new Scanner(System.in);
+		for(int i=0;i<no_rooms;i++)
+		{
+			System.out.println("enter room name");
+			rname=sc.next();
+			this.rooms[i]=new Room();
+			this.rooms[i].setName(rname);
+		}
+	}
+	
+	public String getName() {
+		return name;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	void showRooms()
+	{
+		for(int i=0;i<no_rooms;i++)
+		{
+			System.out.println(rooms[i].getName());
+		}
+	}
+}
+public class CompositeDemo
+{
+	public static void main(String args[])
+	{
+		House house=new House("Samrat Mansion","Juhu,Mumbai",4);
+		System.out.println(house.getName());
+		System.out.println(house.getAddress());
+		System.out.println("house has following rooms");
+		house.showRooms();
+		System.out.println("Lets renovate the house");
+		house=null;
+	}
+}
+
+explain linking of Base class, Sub class and Base object, Sub object.
+======================================================================
+Ans:-  Base class and Sub class are linked i.e. if u make any changes in Base class that will reflect in Sub class. 
+Base Object and Sub object are not linked. If u make any changes in base object Sub object will not be reflected.
+
+
+============
+Session:-8
+============
+====================
+Object Class Methods
+====================
+Object class
+
+parent class of all the classes in java.
+
+some of the methods of Object class are
+
+public String toString()
+
+	returns the String representation of an instance.
+
+
+public boolean equals(Object)
+	
+	checks the equality of two references. If they are refering to same instance then they are equal otherwise not.
+
+public int hashCode()
+
+	every object is given a unique number inside memory. This number is called as hashcode. This method returns the hashcode of caller object.
+
+=================================
+Equals() and Hashcode() Contract
+=================================
+1.Whenever it is invoked on the same object more than once during an execution of a Java application, the hashCode method must consistently return the same integer, provided no information used in equals comparisons on the object is modified. This integer need not remain consistent from one execution of an application to another execution of the same application.
+
+2.If two objects are equal according to the equals(Object) method, then calling the hashCode method on each of the two objects must produce the same integer result.
+
+3.It is not required that if two objects are unequal according to the equals(java.lang.Object) method, then calling the hashCode method on each of the two objects must produce distinct integer results. However, the programmer should be aware that producing distinct integer results for unequal objects may improve the performance of hashtables.
+
+================
+ImmutableDemo
+================
+class Immutable
+{
+	private int num;
+
+	public Immutable(int num)
+	{
+		this.num=num;
+	}
+	int getNum()
+	{
+		return num;
+	}
+	public String toString()
+	{
+		return "["+num+"]";
+	}
+	public Immutable add(int k)
+	{
+		return new Immutable(num+k);
+	}
+}
+public class ImmutableDemo
+{
+	public static void main(String args[])
+	{
+		Immutable i1=new Immutable(10);
+		System.out.println(i1);
+		Immutable i2=i1.add(20);
+		System.out.println(i1);
+		System.out.println(i2);
+	}
+}
+	
+=========================
+Why String is immutable
+=========================
+in case of String there is a possibility that more than one references may refer to same object [from string pool]. here if String class is mutable what will happen is because of one reference other references will suffer. That's why String is immutable
+
+=====================
+What is string pool?
+=====================
+String pool is the memory space in heap memory specially allocated to store the string objects created using string literals. In String pool, there will be no two string objects having the same content.
+Whenever you create a string object using string literal, JVM first checks the content of the object to be created. If there exist an object in the string pool with the same content, then it returns the reference of that object. It doesn’t create a new object. If the content is different from the existing objects then only it creates new object.
+
+================================
+what is intern method of string
+================================
+When the intern method is invoked, if the pool already contains a string equal to this String object as determined by the equals(Object) method, then the string from the pool is returned. Otherwise, this String object is added to the pool and a reference to this String object is returned. 
+It follows that for any two strings s and t, s.intern() == t.intern() is true if and only if s.equals(t) is true
+
+===========================
+String Builder Class Usage
+===========================
+public class StringBuilderDemo1
+{
+	public static void main(String args[])
+	{
+		int num1=10,num2=20;
+		System.out.println(num1+"\t"+num2);
+	}
+}
+
+when compiler encounters 
+	System.out.println(num1+"\t"+num2);
+
+it does following:
+
+	System.out.println(new StringBuilder().append(num1).append("\t").append(num2));
+
+=======================
+String Vs String Buffer
+=======================
+StringBuffer is faster than String.
+
+StringBuffer is used when u need to do lots of modifications to your strings.
+
+String is immutable
+
+StringBuffer is mutable
+
+String s1="hello";
+s1+"hi";
+
+s1 will not be modified, rather it will create a new string "hellohi".
+
+thus increasing memory consumption proving the fact that string is immutable.
+
+StringBuffer sb=new StringBuffer("hello");
+
+if we say sb.append("hi");
+
+a new object is not created, rather existing object gets modified. thus reducing memory consumption.
+
+String uses + operator to concate the strings
+
+StringBuffer uses "concat" to do the same.
+
+String + operator uses 
+	StringBuffer internally
+	call append
+	again convert StringBuffer to String
+
+
+Conclusion:
+
+	It is always recommended to work with StringBuffer
+		a) it is faster
+		b) less memory consumption
+
+========================
+Finalize Method Info
+========================
+protected void finalize()
+
+	finalize() method is called by garbage collector just before object gets garbage collected.
+
+we can override it in order to release the resources e.g. Socket , File, Database connection etc.
+
+However it is not guaranteed when exactly object gets garbage collected. Hence u cannot rely on "finalize()" method in order to release the resources. You have to have some other alternative for that.
+
+Garbage collection cannot be forced in Java. You can request it by using 
+
+	System.gc()
+
+		or
+	Runtime.getRuntime().gc()
+
+============================
+Wrapper Classes in java
+===========================
+
+Wrapper classes in java
+
+Wrapper classes are used to wrap primitives. in java Wrapper classes are available for each primitive.
+
+
+byte		Byte
+short		Short
+int		Integer
+long		Long
+
+float		Float
+double		Double
+
+char		Character
+
+boolean		Boolean
+
+all the wrapper classes are derived from "java.lang.Object". They all are "final".
+
+==================================
+Why Do we Need Wrapper Classes
+==================================
+suppose we have a method in java
+
+	void add(Object)
+
+in which we want to store any primitive value, we can not pass primitive directly to Object as they are not compatible. e.g. Object class and int are not compatible.
+
+solution here is to convert int to Integer (autoboxing) and pass Integer to "add" method. This is acceptable because Integer is a child class of Object.
+
+
+Wrapper class is also used in following case
+
+String str="125";
+
+System.out.println(str); // output  125
+
+str+=10;
+
+System.out.println(str);  // output  12510  ( concatenation )
+
+solution:
+	int temp=Integer.parseInt(str);
+	temp+=10;
+
+	System.out.println(temp); // output   135
+
+===========================
+Autoboxing and unboxing
+===========================
+Before JDK1.5
+
+	converting primitive to Wrapper
+
+
+	int num=10;
+
+	Integer ob=new Integer(num);
+
+
+JDK1.5 onwards
+
+	
+	int num=10;
+	Integer ob=num; // Autoboxing
+
+i.e. Autoboxing means assigning primitive to wrapper
+
+
+
+Before JDK1.5
+
+	converting Wrapper to primitive 
+
+
+	int num=10;
+
+	Integer ob=new Integer(num);
+
+	int temp=ob.intValue();
+
+
+JDK1.5 onwards
+
+
+	int num=10;
+	Integer ob=num; // Autoboxing
+	int temp=ob; // unboxing
+
+i.e. unboxing means assigning wrapper to primitive
+
+autoboxing and unboxing concepts are only till compile time. When u compile the code, compiler converts autoboxing and unboxing code into the old code. It is because JVM doesn't understand autoboxing and unboxing.
+i.e. in the above code when u say :
+	Integer ob1=num;
+compiler converts into
+
+	Integer ob1=new Integer(num);
+
+and when you say :
+	int k=ob1;
+compiler converts into
+	int k=ob1.intValue();
+
+conclusion: autoboxing and unboxing are only syntactical sugar.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
