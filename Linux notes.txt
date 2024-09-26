@@ -1,0 +1,295 @@
+===============================================================
+
+AWS Zoom Link : https://us06web.zoom.us/j/84437549152?pwd=raSPtvAEQfZktoLmszHYmZqeHxyNrp.1
+
+=================================================================
+
+Prequesite : AWS Cloud Free Tier Account
+
+Reference Video : https://www.youtube.com/watch?v=xi-JDeceLeI
+
+=================================================================
+
+1) Linux OS
+
+2) Linux Commands
+
+3) What is IT Infrastructure
+
+4) On-Prem Infrastructure
+
+5) Cloud Computing
+
+6) Advantages with Cloud 
+
+7) AWS Cloud 
+
+8) AWS Services Overview
+
+9) EC2 (Elastic Compute Cloud)
+
+		- EBS
+		- Load Balancing
+		- Auto Scaling
+
+10) S3 (Simple Storage Services)
+
+11) RDS (Relational Databases)
+
+12) IAM (User Management)
+
+13) Bean Stack (Web application execution)
+
+14) AWS Lambdas (Serverless Computing)
+
+15) Billing Overview
+
+
+==========================
+What is Operating System
+==========================
+
+=> OS is a Mediator between user and computer
+
+=> Wihtout OS we can't use any computer
+
+=> Using OS we can run applications in computer.
+
+Ex : Windows, Linux, Unix, Mac, Android, IOS etc......
+
+=============
+Windows OS
+=============
+
+-> It is developed by Microsoft
+
+-> It is GUI based OS (Graphical User interface)
+
+-> It is commercial OS (we need to purchase)
+
+-> Windows is single user based OS
+
+-> Security Features are less (anti-virus is requied)
+
+-> Windows is recommended for personal use
+
+	Ex: browsing, watch movies, play games, online classes.....
+
+-> Windows not recommened to setup Infrastructure
+
+   Ex : Database, web server, app server, backup , storage etc...
+
+
+===========
+Linux OS
+==========
+
+-> It is community based OS
+
+-> Linux is free & open source
+
+-> Linux is Multi User based OS
+
+-> Security features are very good in linux
+
+	(Anti-virus not required)
+
+-> Linux is CLI based OS (Command Line Interface)
+
+-> It is highly recommended to run servers
+
+  Ex : database, web server, docker, jenkins, k8s, sonar, nexus
+
+===============
+Linux History  
+===============
+
+-> Linux OS developed by 'Linus Torvalds'
+
+		Unix OS
+
+		Minux
+
+		(Li) nus Torvals + Mi(nux) = Linux
+
+
+-> Linus Torvalds released linux os into market with source code...
+
+-> Many s/w companies downloaded linux source code and modified according to their requirement and released into market with their brand names those are called as 'Linux Distributions'
+
+				- Amazon Linux
+				- Ubuntu
+				- Red Hat (community & enterprise)
+				- Fedora
+				- CentOS
+				- SUSE
+				- Kali
+				- Debian ..... 200+
+
+==================
+Environment setup
+==================
+
+1) Create Account in AWS 
+
+2) Create Linux Virtual Machine using AWS EC2
+
+3) Connect with Linux Virtual machine using MobaXterm/Putty				
+
+
+@@@ Linux VM Setup : https://www.youtube.com/watch?v=uI2iDk8iTps
+
+
+================
+Linux CommandS
+================
+
+whoami : To display logged in username
+
+date : display current date
+
+cal : display calendar with current month
+
+pwd : display present working directory
+
+ls : list files and directories of pwd
+
+				$ ls
+				$ ls -l
+				$ ls -lr
+				$ ls -lt
+				$ ls -ltr
+
+cd : change directory
+
+			$ cd <dirname>
+
+			$ cd ..
+
+mkdir : To create directory
+
+		$ mkdir java
+
+rmdir : To delete empty directory
+
+touch : To create empty files
+
+			$ touch f1.txt
+
+			$ touch f2.txt f3.txt f4.txt		
+
+cat : To create files + append data + display data
+
+			$ cat > java.txt
+
+			$ cat >> java.txt
+
+			$ cat java.txt	
+
+			$ cat -n java.txt
+
+cp : To copy file data
+
+			$ cp <src-file> <target-file>
+
+mv : To rename files/directories + To move files/directories
+
+			$ mv f1.txt f11.txt
+
+			$ mv f1.txt mydata			
+
+rm : To remove files and non-empty directories	
+
+			$ rm <file-name>
+
+			$ rm -r <dir-name>
+
+head : Print top 10 lines of file data
+
+			$ head a1.txt
+			$ head -n 15 a1.txt
+
+tail : Print last 10 lines of file data
+
+			$ tail a1.txt
+			$ tail -n 30 a1.txt
+
+grep : Print file data based on pattern match
+
+			$ grep "AWS" a1.txt
+
+			$ grep -i "aws" a1.txt
+
+Note: To see exception messages in log file we will use 'grep' command.
+
+			$ grep -i "exception"	app.log
+
+vi : Visual Editor (text editor)
+
+			$ vi <file-name>
+
+			command mode : only read + delete
+
+			insert mode : press 'i' (modifications allowed)
+
+			esc mode : press 'esc'
+
+					:wq => write and quit
+
+					:q! => close without saving
+
+==============================================================
+
+ifconfig : To get ip address
+
+ping : To check connectivity
+
+wget : To download files using url
+
+curl : To send HTTP request
+
+
+==========================
+Package Managers in Linux
+==========================
+
+=> Package managers are used to install softwares in Linux machine
+
+		amazon linux / red hat : yum
+
+		ubuntu / debian : apt
+
+# install git client
+$ sudo yum install git
+$ git --version
+
+# install maven
+$ sudo yum install maven
+$ mvn --version
+$ java --version
+
+
+======================================================
+How to deploy Spring Boot application in Linux VM
+=======================================================
+
+1) Clone Git Repo
+
+		$ git clone https://github.com/ashokitschool/sb_log_app.git
+
+2) Build app using maven
+
+		$ cd sb_log_app
+		$ mvn clean package
+
+3) Run the jar file
+
+		$ java -jar target/sb-log-app.jar
+
+4) Enable Embedded Server port num in security group inbound rule
+
+5) Access application in browser.
+
+			URL : http://public-ip:port/welcome
+
+=========================================================================

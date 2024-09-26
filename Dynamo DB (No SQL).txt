@@ -1,0 +1,55 @@
+Working with NoSQL Databases
++++++++++++++++++++++++++++++
+
+-> Databases are divided into 2 types
+
+		1) SQL Databases (Structured Query Language)
+
+				Ex: Oracle, MySQL, PostgreSQL, MS SQL Server etc...
+
+		2) NoSQL Databases (Not Only SQL)
+
+				Ex: Monogo DB, HBase, Cansandra, Dynamo DB etc...
+
+
+-> To represent structured data we will use SQL databases. SQL databases are also called as Relational databases. 
+
+-> To represent semi-structured and un-structured data we will use NoSQL database
+
+
+
+Working with Dynamo DB in AWS
++++++++++++++++++++++++++++++++
+
+-> Dynamo DB is AWS product
+
+-> Login into AWS Management console
+
+-> Search  "Dynamo DB" and goto "Dynamo DB" Service in AWS
+
+-> Click on "Create Table" option and choose "Table Name" and "primary key" name
+
+-> Once table creation completed, we can create items in the table
+
+Note: Item means record in the table
+
+-> While creating iteam we can add new attributes with datatype
+
+Note: Attribute means Column name
+
+-> For item we can choose attributes
+
+-> Once items are added we can scar and query items
+
+-> Scan means retrieving all items from table
+
+-> Query means retrieving item based on primary key
+
+
+
+
+
+
+
+
+
